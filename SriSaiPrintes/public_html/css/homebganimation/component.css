@@ -1,3 +1,5 @@
+.homehtml{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;}
+.homebody{margin:0;}
 /* Header */
 .large-header {
 	position: relative;
@@ -9,7 +11,7 @@
 	z-index: 1;
 }
 
-.demo-1 .large-header {
+.homepgdiv .large-header {
 	background-image: url('../../img/demo-1-bg.jpg');
 }
 
@@ -25,7 +27,7 @@
 	transform: translate3d(-50%,-50%,0);
 }
 
-.demo-1 .main-title {
+.homepgdiv .main-title {
 	text-transform: uppercase;
 	font-size: 4.2em;
 	letter-spacing: 0.1em;
@@ -38,7 +40,7 @@
 }
 
 @media only screen and (max-width : 768px) {
-	.demo-1 .main-title {
-		font-size: 3em;
-	}
+    .homepgdiv .main-title {
+            font-size: 3em;
+    }
 }
