@@ -80,9 +80,9 @@
             <div class="wel">
                 <div class="wel-info">
 
-                    <h1>Welcome to know about us</h1>
-                    <span class="brk"></span>
-                    <p class="animated1_5s slideInLeft50s">A customized about us page design using bootstrap framework, HTML and CSS. If you need to use this attractive and responsive bootstrap about us page design go back to article and click download button to download it.</p>
+                    <h1 id="aboutusheader" class="animated1_5s ">Welcome to know about us</h1>
+                    <span id="aboutusheaderdivider" class="animated1_5s brk"></span>
+                    <p id="aboutusheadercontent" class="animated1_5s ">A customized about us page design using bootstrap framework, HTML and CSS. If you need to use this attractive and responsive bootstrap about us page design go back to article and click download button to download it.</p>
 
                 </div>
             </div>
@@ -93,7 +93,7 @@
             <div class="wel-info text-center">
 
                 <h2 id="whoarewe" class="animated1_5s ">Who We Are?</h2>
-                <span class="brk"></span>
+                <span id="whoarewedivider" class="animated1_5s brk"></span>
                 <p id="wearedetail" class="animated1_5s ">A customized about us page design using bootstrap framework, HTML and CSS. If you need to use this attractive and responsive bootstrap about us page design go back to article and click download button to download it.</p>
 
             </div>
@@ -148,33 +148,46 @@
         <script src="js/aboutUs/togglemenu.js"></script>
         <script>!function(e, a, t, n, c, o, s){e.GoogleAnalyticsObject = c, e[c] = e[c] || function(){(e[c].q = e[c].q || []).push(arguments)}, e[c].l = 1 * new Date, o = a.createElement(t), s = a.getElementsByTagName(t)[0], o.async = 1, o.src = n, s.parentNode.insertBefore(o, s)}(window, document, "script", "//www.google-analytics.com/analytics.js", "ga"), ga("create", "UA-47210639-2", "auto"), ga("send", "pageview")</script><script type=application/ld+json>{ "@context": "http://schema.org/", "@type": "Review", "itemReviewed": {"@type": "Thing", "name": "Article"}, "author": {"@type": "Person", "name": "Md Ashraf Malik"}, "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"}, "publisher": { "@type": "Organization", "name": "Web Developer Bareilly" } }</script>
         <script>
-            function isElementInViewport(elem) {
-                var $elem = $(elem);
-                        // Get the scroll position of the page.
-                        var scrollElem = ((navigator.userAgent.toLowerCase().indexOf('webkit') != - 1) ? 'body' : 'html');
-                        var viewportTop = $(scrollElem).scrollTop();
-                        var viewportBottom = viewportTop + $(window).height();
-                        // Get the position of the element on the page.
-                        var elemTop = Math.round($elem.offset.top);
-                        var elemBottom = elemTop + $elem.height();
-                        return ((elemTop < viewportBottom) && (elemBottom > viewportTop));
-                    }
+            function isElementInViewport(ele) {
+                // Get the scroll position of the page.
+                var scrollElem = ((navigator.userAgent.toLowerCase().indexOf('webkit') != - 1) ? 'body' : 'html');
+                var viewportTop = $(scrollElem).scrollTop();
+                var viewportBottom = viewportTop + $(window).height();
+                // Get the position of the element on the page.
+                var elemTop = Math.round($(ele).offset().top);
+                var elemBottom = elemTop + $(ele).height();
+                return ((elemTop < viewportBottom) && (elemBottom > viewportTop));
+            }
 
             // Check if it's time to start the animation.
-            function checkAnimation(ele) {
-                var $elem = $(ele);
+            function checkAnimation(ele, stclass) {
                 // If the animation has already been started
-                if ($elem.hasClass('slideInLeft50s')) return;
-                if (isElementInViewport($elem)) {
+                
+                if (isElementInViewport(ele)) {
                 // Start the animation
-                $elem.addClass('slideInLeft50s');
+                    if ($(ele).hasClass(stclass)) return;
+                    $(ele).addClass(stclass);
+                } else {
+                    if ($(ele).hasClass(stclass))
+                    $(ele).removeClass(stclass);
                 }
             }
 
+            checkAnimation('#whoarewe','slideInLeft50s');
+            checkAnimation('#wearedetail','slideInLeft50s');
+            checkAnimation('#whoarewedivider','slideInLeft50s');
+            checkAnimation('#aboutusheader','bounceInDown');
+            checkAnimation('#aboutusheaderdivider','delay_1s shake');
+            checkAnimation('#aboutusheadercontent','delay_1s rubberBand');
             // Capture scroll events
             $(window).scroll(function(){
-                checkAnimation('whoarewe');
-                checkAnimation('wearedetail');
+                checkAnimation('#whoarewe','slideInLeft50s');
+                checkAnimation('#wearedetail','slideInLeft50s');
+                checkAnimation('#whoarewedivider','slideInLeft50s');
+                checkAnimation('#aboutusheader','bounceInDown');
+                checkAnimation('#aboutusheaderdivider','delay_1s shake');
+                checkAnimation('#aboutusheadercontent','delay_1s rubberBand');
+                
             });        
         </script>
     </body>
